@@ -1,4 +1,4 @@
-const useDate = (eventDate: Date) => {
+const useDate = (eventDate: string) => {
   const date = new Date(eventDate);
   const months = [
     "Jan",

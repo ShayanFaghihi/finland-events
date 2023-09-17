@@ -1,4 +1,3 @@
-import React from "react";
 import headerImage from "../assets/home-background.png";
 import Container from "./UI/Container";
 

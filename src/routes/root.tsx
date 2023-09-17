@@ -8,7 +8,7 @@ import Container from "../components/UI/Container";
 
 const Root = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [dateQuery, setDateQuery] = useState();
+  const [dateQuery, setDateQuery] = useState("");
 
   const searchEventsHandler = (query: string) => {
     if (query) {
@@ -16,7 +16,7 @@ const Root = () => {
     }
   };
 
-  const filterDateHandler = (date) => {
+  const filterDateHandler = (date: string) => {
     setDateQuery(date);
   };
 

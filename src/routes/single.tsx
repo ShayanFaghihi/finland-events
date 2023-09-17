@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
 import Event from "../components/Event/Event";
-import Backdrop from "../components/UI/backdrop";
+import Backdrop from "../components/UI/Backdrop";
 import Loader from "../components/UI/Loader";
 
 const GET_EVENTS = gql`

@@ -36,7 +36,12 @@ export interface EventsValidator {
   ];
 }
 
-const EventsList = ({ searchQuery, dateQuery }) => {
+interface EventsListProps {
+  searchQuery: string;
+  dateQuery: string;
+}
+
+const EventsList: React.FC<EventsListProps> = ({ searchQuery, dateQuery }) => {
   const { loading, error, data } = useQuery<{ conferences: EventsValidator[] }>(
     GET_EVENTS
   );
@@ -51,7 +56,7 @@ const EventsList = ({ searchQuery, dateQuery }) => {
   } else {
     let conferences = data?.conferences;
     if (searchQuery) {
-      conferences = conferences.filter((events) => {
+      conferences = conferences?.filter((events) => {
         return events.name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
@@ -59,7 +64,7 @@ const EventsList = ({ searchQuery, dateQuery }) => {
     if (dateQuery) {
       const selectedDateTimestamp = new Date(dateQuery).getTime();
 
-      conferences = conferences.filter((event) => {
+      conferences = conferences?.filter((event) => {
         const eventDateTimestamp = new Date(event.startDate).getTime();
         return eventDateTimestamp === selectedDateTimestamp;
       });
@@ -67,7 +72,7 @@ const EventsList = ({ searchQuery, dateQuery }) => {
 
     return (
       <ul className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 min-h-[50vh]">
-        {conferences.length > 0 ? (
+        {conferences && conferences.length > 0 ? (
           conferences?.map((event) => <EventBox key={event.id} {...event} />)
         ) : (
           <div>There are no events</div>

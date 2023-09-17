@@ -1,4 +1,12 @@
-const SearchEvents = ({ searchEvents, filterDate }) => {
+interface SearchEventsProps {
+  searchEvents: (value: string) => void;
+  filterDate: (value: string) => void;
+}
+
+const SearchEvents: React.FC<SearchEventsProps> = ({
+  searchEvents,
+  filterDate,
+}) => {
   const searchHandler = (query: string) => {
     if (query.trim()) {
       searchEvents(query);
