@@ -49,7 +49,7 @@ export interface EventValidator {
   name: string;
   slogan: string;
   websiteUrl: string;
-  startDate: Date;
+  startDate: string;
   organizers: {
     name: string;
     about: string;
@@ -63,7 +63,7 @@ export interface EventValidator {
     };
   }[];
   schedules: {
-    day: Date;
+    day: string;
     description: string;
     intervals: {
       begin: string;
