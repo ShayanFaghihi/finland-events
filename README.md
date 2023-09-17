@@ -64,13 +64,13 @@ To run this project locally, follow these steps:
 
 You can also access a live version of this app deployed on Vercel:
 
-[Event Finder App Live Demo](https://your-vercel-app-url.vercel.app)
+[Event Finder App Live Demo](https://finland-events.vercel.app/)
 
 ## Screenshots
 
 Here is a screenshot of the Event Finder App:
 
-![Event Finder App Screenshot](./screenshot.png)
+![Event Finder App Screenshot](./src/assets/screenshot.png)
 
 ---
 
