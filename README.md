@@ -1,6 +1,6 @@
 # Event Finder App
 
-![Event Finder App Screenshot](./screenshot.png)
+![Event Finder App Screenshot](./src/assets/screenshot.png)
 
 This is a React + TypeScript application created with Vite that allows you to explore and discover various events and conferences in Finland. The app utilizes GraphQL and Apollo Client to fetch event data. React Router is used for navigation, and custom hooks are implemented for data management.
 
