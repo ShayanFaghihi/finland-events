@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply inline-block cursor-pointer p-3 border-none rounded-md bg-purple text-white font-medium text-base w-2/12 text-center;
+  }
+}
