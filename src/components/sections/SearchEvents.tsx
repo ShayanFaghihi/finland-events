@@ -34,6 +34,8 @@ const SearchEvents: React.FC<SearchEventsProps> = ({
         type="date"
         name="event-date"
         id="event-date"
+        className="bg-purple text-white rounded-lg p-3 cursor-pointer"
+        style={{ colorScheme: "dark" }}
       />
     </div>
   );
