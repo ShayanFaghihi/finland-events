@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { EventsValidator } from "./EventsList";
 import useDate from "../hooks/use-date";
 
-import placeholderImage from "../../assets/placeholder.png";
+import placeholderImage from "../../assets/placeholder-min.png";
 import locationIcon from "../../assets/location.svg";
 
 const EventBox = (props: EventsValidator) => {
