@@ -75,7 +75,10 @@ const Event = (props: EventValidator) => {
                   : locationCity}
               </span>
             </p>
-            <a className="btn-primary w-full" href={props.websiteUrl}>
+            <a
+              className="btn-primary w-full hover:bg-opacity-75 ease-in transition-colors"
+              href={props.websiteUrl}
+            >
               Event Website
             </a>
           </aside>
@@ -124,7 +127,10 @@ const Event = (props: EventValidator) => {
           </ul>
         </section>
         <div className="flex w-full justify-center">
-          <Link className="btn-primary" to="/">
+          <Link
+            className="btn-primary hover:bg-opacity-75 ease-in transition-colors"
+            to="/"
+          >
             Review All Events
           </Link>
         </div>
