@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Link } from "react-router-dom";
 import { EventsValidator } from "./EventsList";
 import useDate from "../hooks/use-date";
@@ -6,6 +8,8 @@ import placeholderImage from "../../assets/placeholder-min.png";
 import locationIcon from "../../assets/location.svg";
 
 const EventBox = (props: EventsValidator) => {
+  const [imageHasError, setImageHasError] = useState(false);
+
   let locationImage = placeholderImage;
   let locationCity = "Finland";
 
@@ -21,10 +25,15 @@ const EventBox = (props: EventsValidator) => {
   return (
     <li className="rounded-lg shadow-md flex flex-col justify-between">
       <div className="w-full h-32">
-        <img
-          className="h-full w-full rounded-t-lg"
-          src={locationImage || placeholderImage}
-        />
+        {imageHasError ? (
+          <img className="h-full w-full rounded-t-lg" src={placeholderImage} />
+        ) : (
+          <img
+            className="h-full w-full rounded-t-lg"
+            src={locationImage || placeholderImage}
+            onError={() => setImageHasError(true)}
+          />
+        )}
       </div>
       <div className="px-6 pt-4 py-6 flex flex-col items-center justify-between">
         <div className="flex justify-between mb-4">
