@@ -1,5 +1,5 @@
-import headerImage from "../assets/home-background.png";
-import Container from "./UI/Container";
+import headerImage from "../../assets/home-background.png";
+import Container from "../UI/Container";
 
 const MainHeader = () => {
   return (

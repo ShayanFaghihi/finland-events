@@ -6,7 +6,7 @@ import placeholderImage from "../../assets/placeholder.png";
 import locationIcon from "../../assets/location.svg";
 import Container from "../UI/Container";
 
-import Footer from "../Footer";
+import Footer from "../sections/Footer";
 
 const Event = (props: EventValidator) => {
   let locationImage = placeholderImage;

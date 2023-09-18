@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Footer from "../components/Footer";
+import Footer from "../components/sections/Footer";
 import EventsList from "../components/List/EventsList";
-import MainHeader from "../components/MainHeader";
-import SearchEvents from "../components/SearchEvents";
+import MainHeader from "../components/sections/MainHeader";
+import SearchEvents from "../components/sections/SearchEvents";
 import Container from "../components/UI/Container";
 
 const Root = () => {
