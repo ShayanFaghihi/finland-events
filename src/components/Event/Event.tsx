@@ -57,10 +57,10 @@ const Event = (props: EventValidator) => {
               Event Information
             </h2>
             <div className="font-normal">
-              {`${eventDay} of ${eventMonth}, ${eventYear}`}
+              <span>🗓️</span> {`${eventDay} of ${eventMonth}, ${eventYear}`}
             </div>
             <div className="flex gap-1 font-poppins">
-              <img src={locationIcon} />
+              <img width="15" src={locationIcon} />
               <span className="font-light">
                 {props.locations.length > 0
                   ? props.locations.map((location) => location.city)
