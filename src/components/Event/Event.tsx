@@ -96,7 +96,7 @@ const Event = (props: EventValidator) => {
               return (
                 <li
                   key={key}
-                  className="w-full bg-white shadow-md p-8 flex justify-start items-center rounded-t-xl relative"
+                  className="w-full bg-white p-8 flex justify-start items-center rounded-t-xl relative custom-shadow"
                 >
                   <div className="flex flex-col justify-center items-center mr-4 ">
                     {/* <span className="font-poppins font-bold text-sm">Date</span> */}

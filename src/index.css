@@ -7,3 +7,7 @@
     @apply inline-block cursor-pointer p-3 border-none rounded-md bg-purple text-white font-medium text-base text-center;
   }
 }
+
+.custom-shadow {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}

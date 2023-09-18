@@ -11,7 +11,7 @@ const MainHeader = () => {
         <h1 className="text-white font-poppins font-bold text-4xl text-center">
           Awesome Events in <br /> Finland
         </h1>
-        <small className="font-poppins text-grey font-thin text-sm text-center -mt-6">
+        <small className="font-poppins text-white font-light text-sm text-center -mt-6">
           An interactive online experienced by the community, free for everyone{" "}
         </small>
       </Container>
