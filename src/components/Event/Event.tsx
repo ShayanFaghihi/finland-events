@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { EventValidator } from "../../routes/single";
 import useDate from "../hooks/use-date";
 import { Link } from "react-router-dom";
@@ -9,6 +11,8 @@ import Container from "../UI/Container";
 import Footer from "../sections/Footer";
 
 const Event = (props: EventValidator) => {
+  const [imageHasError, setImageHasError] = useState(false);
+
   let locationImage = placeholderImage;
   let locationCity = "Finland";
   const {
@@ -19,14 +23,22 @@ const Event = (props: EventValidator) => {
 
   return (
     <>
-      <header
-        className="w-full shadow-sm h-[40vh] bg-cover bg-no-repeat bg-center bg-[black] bg-opacity-20 bg-blend-multiply mb-8"
-        style={{
-          backgroundImage: `url(${
-            props.locations[0]?.image.url || locationImage
-          })`,
-        }}
-      ></header>
+      <header className="w-full shadow-sm h-[40vh] mb-8">
+        {imageHasError ? (
+          <img
+            className="w-full h-full object-cover object-top"
+            src={locationImage}
+            alt=""
+          />
+        ) : (
+          <img
+            className="w-full h-full object-cover object-top"
+            src={props.locations[0]?.image.url || locationImage}
+            alt=""
+            onError={() => setImageHasError(true)}
+          />
+        )}
+      </header>
       <Container>
         <main className="block sm:flex justify-between">
           <div className="">
