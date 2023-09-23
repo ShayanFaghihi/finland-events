@@ -41,7 +41,7 @@ interface EventsListProps {
   dateQuery: string;
 }
 
-const EventsList: React.FC<EventsListProps> = ({ searchQuery, dateQuery }) => {
+const EventsList = ({ searchQuery, dateQuery }: EventsListProps) => {
   const { loading, error, data } = useQuery<{ conferences: EventsValidator[] }>(
     GET_EVENTS
   );

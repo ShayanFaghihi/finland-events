@@ -3,10 +3,7 @@ interface SearchEventsProps {
   filterDate: (value: string) => void;
 }
 
-const SearchEvents: React.FC<SearchEventsProps> = ({
-  searchEvents,
-  filterDate,
-}) => {
+const SearchEvents = ({ searchEvents, filterDate }: SearchEventsProps) => {
   const searchHandler = (query: string) => {
     if (query.trim()) {
       searchEvents(query);

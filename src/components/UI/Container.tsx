@@ -5,7 +5,7 @@ interface ContainerProps {
   children: ReactNode;
 }
 
-const Container: React.FC<ContainerProps> = ({ className, children }) => {
+const Container = ({ className, children }: ContainerProps) => {
   return (
     <div
       className={`w-[80%] max-w-5xl mx-auto flex flex-col gap-8 ${
