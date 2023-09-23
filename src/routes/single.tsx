@@ -7,7 +7,7 @@ import Loader from "../components/UI/Loader";
 
 import { Events } from "../interfaces/interfaces";
 
-const Single = () => {
+const SinglePage = () => {
   const { eventId } = useParams();
   const { loading, error, data } = useQuery<{ conferences: Events[] }>(
     singleEvent
@@ -29,4 +29,4 @@ const Single = () => {
   }
 };
 
-export default Single;
+export default SinglePage;

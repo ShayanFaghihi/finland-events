@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-import Root from "./routes/root";
-import Single from "./routes/single";
+import RootLayout from "./routes/root";
+import HomePage from "./routes/home";
+import SinglePage from "./routes/single";
 
 import "./index.css";
 
@@ -16,11 +17,17 @@ const client = new ApolloClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-  },
-  {
-    path: "/event/:eventId",
-    element: <Single />,
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "/event/:eventId",
+        element: <SinglePage />,
+      },
+    ],
   },
 ]);
 
