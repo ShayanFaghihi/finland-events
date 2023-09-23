@@ -1,88 +1,16 @@
 import { useParams } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
-
+import { useQuery } from "@apollo/client";
+import { singleEvent } from "../graphql/eventsGraph";
 import Event from "../components/Event/Event";
 import Backdrop from "../components/UI/Backdrop";
 import Loader from "../components/UI/Loader";
 
-const GET_EVENTS = gql`
-  query GetEvents {
-    conferences {
-      id
-      name
-      slogan
-      startDate
-      websiteUrl
-      organizers {
-        name
-        about
-        image {
-          url
-        }
-        social {
-          homepage
-          twitter
-          github
-        }
-      }
-      schedules {
-        day
-        description
-        intervals {
-          begin
-        }
-      }
-      locations {
-        name
-        city
-        address
-        image {
-          url
-        }
-      }
-    }
-  }
-`;
-
-export interface EventValidator {
-  id: string;
-  name: string;
-  slogan: string;
-  websiteUrl: string;
-  startDate: string;
-  organizers: {
-    name: string;
-    about: string;
-    image: {
-      url: string;
-    };
-    social: {
-      homepage: string;
-      twitter: string;
-      github: string;
-    };
-  }[];
-  schedules: {
-    day: string;
-    description: string;
-    intervals: {
-      begin: string;
-    }[];
-  }[];
-  locations: {
-    name: string;
-    city: string;
-    address: string;
-    image: {
-      url: string;
-    };
-  }[];
-}
+import { Events } from "../interfaces/interfaces";
 
 const Single = () => {
   const { eventId } = useParams();
-  const { loading, error, data } = useQuery<{ conferences: EventValidator[] }>(
-    GET_EVENTS
+  const { loading, error, data } = useQuery<{ conferences: Events[] }>(
+    singleEvent
   );
 
   if (error) console.log(error);

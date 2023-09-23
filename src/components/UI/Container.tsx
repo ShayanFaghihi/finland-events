@@ -1,9 +1,4 @@
-import { ReactNode } from "react";
-
-interface ContainerProps {
-  className?: string;
-  children: ReactNode;
-}
+import { ContainerProps } from "../../interfaces/interfaces";
 
 const Container = ({ className, children }: ContainerProps) => {
   return (

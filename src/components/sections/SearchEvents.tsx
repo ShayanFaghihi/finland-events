@@ -1,7 +1,4 @@
-interface SearchEventsProps {
-  searchEvents: (value: string) => void;
-  filterDate: (value: string) => void;
-}
+import { SearchEventsProps } from "../../interfaces/interfaces";
 
 const SearchEvents = ({ searchEvents, filterDate }: SearchEventsProps) => {
   const searchHandler = (query: string) => {

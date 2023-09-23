@@ -1,49 +1,13 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { allEvents } from "../../graphql/eventsGraph";
 import EventBox from "./EventBox";
 import Loader from "../UI/Loader";
 
-const GET_EVENTS = gql`
-  query GetEvents {
-    conferences {
-      id
-      name
-      startDate
-      slogan
-      locations {
-        name
-        city
-        image {
-          url
-        }
-      }
-    }
-  }
-`;
-
-export interface EventsValidator {
-  id: string;
-  name: string;
-  startDate: string;
-  slogan: string;
-  locations: [
-    {
-      name: string;
-      about: string;
-      city: string;
-      address: string;
-      image: { url: string };
-    }
-  ];
-}
-
-interface EventsListProps {
-  searchQuery: string;
-  dateQuery: string;
-}
+import { EventsListProps, Events } from "../../interfaces/interfaces";
 
 const EventsList = ({ searchQuery, dateQuery }: EventsListProps) => {
-  const { loading, error, data } = useQuery<{ conferences: EventsValidator[] }>(
-    GET_EVENTS
+  const { loading, error, data } = useQuery<{ conferences: Events[] }>(
+    allEvents
   );
 
   if (error) console.log(error);

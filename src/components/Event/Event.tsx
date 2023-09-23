@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { EventValidator } from "../../routes/single";
-import useDate from "../hooks/use-date";
+import { Events } from "../../interfaces/interfaces";
+import useDate from "../../hooks/use-date";
 import { Link } from "react-router-dom";
 
 import placeholderImage from "../../assets/placeholder.png";
@@ -10,7 +10,7 @@ import Container from "../UI/Container";
 
 import Footer from "../sections/Footer";
 
-const Event = (props: EventValidator) => {
+const Event = (props: Events) => {
   const [imageHasError, setImageHasError] = useState(false);
 
   let locationImage = placeholderImage;
