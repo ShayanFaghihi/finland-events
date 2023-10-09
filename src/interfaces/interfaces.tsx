@@ -33,6 +33,7 @@ export interface Events {
       url: string;
     };
   }[];
+  isWishlist: boolean;
 }
 
 export interface EventsListProps {

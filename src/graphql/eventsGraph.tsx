@@ -14,6 +14,7 @@ export const allEvents = gql`
           url
         }
       }
+      isWishlist @client
     }
   }
 `;
@@ -53,6 +54,7 @@ export const singleEvent = gql`
           url
         }
       }
+      isWishlist @client
     }
   }
 `;

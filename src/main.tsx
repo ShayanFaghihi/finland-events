@@ -1,18 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
+import client from "./graphql/client";
 
 import RootLayout from "./routes/root";
 import HomePage from "./routes/home";
 import SinglePage from "./routes/single";
 
 import "./index.css";
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: "https://api.react-finland.fi/graphql",
-});
 
 const router = createBrowserRouter([
   {
