@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { wishlistVar } from "../../graphql/client";
 
 import { Link } from "react-router-dom";
 import { Events } from "../../interfaces/interfaces";
@@ -6,9 +7,23 @@ import useDate from "../../hooks/use-date";
 
 import placeholderImage from "../../assets/placeholder-min.png";
 import locationIcon from "../../assets/location.svg";
+import like from "../../assets/heart.svg";
+import disLike from "../../assets/heart-unliked.svg";
 
 const EventBox = (props: Events) => {
   const [imageHasError, setImageHasError] = useState(false);
+
+  const addToWishlistHandler = () => {
+    const wishList = wishlistVar();
+    const updatedWishList = props.isWishlist
+      ? wishList.filter((eventId) => eventId !== props.id)
+      : [...wishList, props.id];
+    wishlistVar(updatedWishList);
+    localStorage.setItem("wishList", JSON.stringify(updatedWishList));
+  };
+  const wishListStyle = props.isWishlist
+    ? { backgroundColor: "#f27171" }
+    : { backgroundColor: "white" };
 
   let locationImage = placeholderImage;
   let locationCity = "Finland";
@@ -24,7 +39,7 @@ const EventBox = (props: Events) => {
   }
   return (
     <li className="rounded-lg shadow-md flex flex-col justify-between">
-      <div className="w-full h-32">
+      <div className="w-full h-32 relative">
         {imageHasError ? (
           <img className="h-full w-full rounded-t-lg" src={placeholderImage} />
         ) : (
@@ -34,6 +49,17 @@ const EventBox = (props: Events) => {
             onError={() => setImageHasError(true)}
           />
         )}
+        <span
+          style={wishListStyle}
+          className="rounded-full w-6 h-6 flex justify-center items-center cursor-pointer absolute top-3 right-3"
+          onClick={addToWishlistHandler}
+        >
+          <img
+            className="w-4"
+            src={props.isWishlist ? like : disLike}
+            alt="heart"
+          />
+        </span>
       </div>
       <div className="px-6 pt-4 py-6 flex flex-col items-center justify-between">
         <div className="flex justify-between mb-4">

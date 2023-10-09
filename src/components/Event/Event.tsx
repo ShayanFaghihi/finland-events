@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { wishlistVar } from "../../graphql/client";
 
 import { Events } from "../../interfaces/interfaces";
 import useDate from "../../hooks/use-date";
@@ -6,12 +7,26 @@ import { Link } from "react-router-dom";
 
 import placeholderImage from "../../assets/placeholder.png";
 import locationIcon from "../../assets/location.svg";
+import like from "../../assets/heart.svg";
+import disLike from "../../assets/heart-unliked.svg";
 import Container from "../UI/Container";
 
 import Footer from "../sections/Footer";
 
 const Event = (props: Events) => {
   const [imageHasError, setImageHasError] = useState(false);
+
+  const addToWishlistHandler = () => {
+    const wishList = wishlistVar();
+    const updatedWishList = props.isWishlist
+      ? wishList.filter((eventId) => eventId !== props.id)
+      : [...wishList, props.id];
+    wishlistVar(updatedWishList);
+    localStorage.setItem("wishList", JSON.stringify(updatedWishList));
+  };
+  const wishListStyle = props.isWishlist
+    ? { backgroundColor: "#f27171" }
+    : { backgroundColor: "white", border: "1px solid #cfcfcf" };
 
   let locationImage = placeholderImage;
   let locationCity = "Finland";
@@ -41,9 +56,20 @@ const Event = (props: Events) => {
       </header>
       <Container>
         <main className="block sm:flex justify-between">
-          <div className="">
-            <h1 className="font-poppins font-bold capitalize text-blue text-xl sm:text-3xl">
+          <div>
+            <h1 className="font-poppins font-bold capitalize text-blue text-xl sm:text-3xl flex items-center gap-2">
               {props.name}
+              <span
+                style={wishListStyle}
+                className="rounded-full w-6 h-6 flex justify-center items-center cursor-pointer"
+                onClick={addToWishlistHandler}
+              >
+                <img
+                  className="w-4"
+                  src={props.isWishlist ? like : disLike}
+                  alt="heart"
+                />
+              </span>
             </h1>
             <p className="font-poppins text-blue font-light text-md sm:text-xl">
               {props.slogan}

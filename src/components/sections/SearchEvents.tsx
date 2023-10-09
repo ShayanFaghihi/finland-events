@@ -1,4 +1,5 @@
 import { SearchEventsProps } from "../../interfaces/interfaces";
+import Wishlist from "../Wishlist/Wishlist";
 
 const SearchEvents = ({ searchEvents, filterDate }: SearchEventsProps) => {
   const searchHandler = (query: string) => {
@@ -31,6 +32,7 @@ const SearchEvents = ({ searchEvents, filterDate }: SearchEventsProps) => {
         className="bg-purple text-white rounded-lg p-3 cursor-pointer"
         style={{ colorScheme: "dark" }}
       />
+      <Wishlist />
     </div>
   );
 };
