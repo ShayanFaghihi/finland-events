@@ -1,4 +1,5 @@
-import { makeVar, InMemoryCache, ApolloClient } from "@apollo/client";
+import { makeVar, InMemoryCache, ApolloClient, HttpLink } from "@apollo/client";
+import fetch from "cross-fetch";
 
 // Function to initialize the Reactive Variable function (makeVar())
 const eventsIdList = () => {
@@ -36,7 +37,7 @@ const client = new ApolloClient({
       },
     },
   }),
-  uri: "https://api.react-finland.fi/graphql",
+  link: new HttpLink({ uri: "https://api.react-finland.fi/graphql", fetch }),
 });
 
 export default client;
