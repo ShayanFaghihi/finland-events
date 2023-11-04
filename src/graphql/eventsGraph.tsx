@@ -20,9 +20,8 @@ export const allEvents = gql`
 `;
 
 export const singleEvent = gql`
-  query GetEvents {
-    conferences {
-      id
+  query GetEvent($eventId: ID!) {
+    conference(id: $eventId) {
       name
       slogan
       startDate
