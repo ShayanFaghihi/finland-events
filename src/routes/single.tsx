@@ -9,7 +9,7 @@ import { Events } from "../interfaces/interfaces";
 
 const SinglePage = () => {
   const { eventId } = useParams();
-  const { loading, error, data } = useQuery<{ conference: Events[] }>(
+  const { loading, error, data } = useQuery<{ conference: Events }>(
     singleEvent,
     { variables: { eventId } }
   );
@@ -25,8 +25,23 @@ const SinglePage = () => {
       </>
     );
   } else {
-    const event = data?.conference;
-    return event && <Event {...event} />;
+    const eventData = data?.conference;
+    return (
+      eventData && (
+        <Event
+          event={eventData}
+          id={""}
+          name={""}
+          slogan={""}
+          websiteUrl={""}
+          startDate={""}
+          organizers={[]}
+          schedules={[]}
+          locations={[]}
+          isWishlist={false}
+        />
+      )
+    );
   }
 };
 

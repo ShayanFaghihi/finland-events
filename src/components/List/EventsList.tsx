@@ -37,12 +37,7 @@ const EventsList = ({ searchQuery, dateQuery }: EventsListProps) => {
       <ul className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 min-h-[50vh]">
         {conferences && conferences.length > 0 ? (
           conferences?.map((event) => {
-            return (
-              <div>
-                <p>{event.name}</p>
-                <EventBox key={event.id} {...event} />
-              </div>
-            );
+            return <EventBox key={event.id} {...event} />;
           })
         ) : (
           <div>There are no events</div>

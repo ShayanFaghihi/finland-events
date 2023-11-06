@@ -34,6 +34,7 @@ export interface Events {
     };
   }[];
   isWishlist: boolean;
+  event: Events;
 }
 
 export interface EventsListProps {

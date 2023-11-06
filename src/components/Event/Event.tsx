@@ -13,18 +13,18 @@ import Container from "../UI/Container";
 
 import Footer from "../sections/Footer";
 
-const Event = (props: Events) => {
+const Event = ({ event }: Events) => {
   const [imageHasError, setImageHasError] = useState(false);
 
   const addToWishlistHandler = () => {
     const wishList = wishlistVar();
-    const updatedWishList = props.isWishlist
-      ? wishList.filter((eventId) => eventId !== props.id)
-      : [...wishList, props.id];
+    const updatedWishList = event.isWishlist
+      ? wishList.filter((eventId) => eventId !== event.id)
+      : [...wishList, event.id];
     wishlistVar(updatedWishList);
     localStorage.setItem("wishList", JSON.stringify(updatedWishList));
   };
-  const wishListStyle = props.isWishlist
+  const wishListStyle = event.isWishlist
     ? { backgroundColor: "#f27171" }
     : { backgroundColor: "white", border: "1px solid #cfcfcf" };
 
@@ -34,7 +34,7 @@ const Event = (props: Events) => {
     day: eventDay,
     month: eventMonth,
     year: eventYear,
-  } = useDate(props.startDate);
+  } = useDate(event.startDate || "");
 
   return (
     <>
@@ -48,7 +48,7 @@ const Event = (props: Events) => {
         ) : (
           <img
             className="w-full h-full object-cover object-top"
-            src={props.locations[0]?.image.url || locationImage}
+            src={event.locations?.[0]?.image.url || locationImage}
             alt=""
             onError={() => setImageHasError(true)}
           />
@@ -58,7 +58,7 @@ const Event = (props: Events) => {
         <main className="block sm:flex justify-between">
           <div>
             <h1 className="font-poppins font-bold capitalize text-blue text-xl sm:text-3xl flex items-center gap-2">
-              {props.name}
+              {event.name}
               <span
                 style={wishListStyle}
                 className="rounded-full w-6 h-6 flex justify-center items-center cursor-pointer"
@@ -66,16 +66,16 @@ const Event = (props: Events) => {
               >
                 <img
                   className="w-4"
-                  src={props.isWishlist ? like : disLike}
+                  src={event.isWishlist ? like : disLike}
                   alt="heart"
                 />
               </span>
             </h1>
             <p className="font-poppins text-blue font-light text-md sm:text-xl">
-              {props.slogan}
+              {event.slogan}
             </p>
             <ul className="flex justify-start list-none mt-4 mb-4 flex-wrap">
-              {props.organizers.map((organizer) => (
+              {event.organizers?.map((organizer) => (
                 <li
                   key={organizer.name}
                   className="w-8 h-8 rounded-full not -ml-2 first-of-type:ml-0 hover:mr-2 transition-all"
@@ -100,22 +100,22 @@ const Event = (props: Events) => {
             <div className="flex gap-1 font-poppins">
               <img width="15" src={locationIcon} />
               <span className="font-light">
-                {props.locations.length > 0
-                  ? props.locations.map((location) => location.city)
+                {event.locations && event.locations.length > 0
+                  ? event.locations?.map((location) => location.city)
                   : locationCity}
               </span>
             </div>
             <p className="flex gap-1 mb-4">
               <span>🧭</span>
               <span className="font-light ">
-                {props.locations.length > 0
-                  ? props.locations?.map((location) => location.address)
+                {event.locations && event.locations.length > 0
+                  ? event.locations?.map((location) => location.address)
                   : locationCity}
               </span>
             </p>
             <a
               className="btn-primary w-full hover:bg-opacity-75 ease-in transition-colors"
-              href={props.websiteUrl}
+              href={event.websiteUrl}
             >
               Event Website
             </a>
@@ -127,7 +127,7 @@ const Event = (props: Events) => {
             Schedule
           </h2>
           <ul className="flex flex-col gap-6 w-full">
-            {props.schedules.map((schedule, key) => {
+            {event.schedules?.map((schedule, key) => {
               const { day: scheduleDay, month: scheduleMonth } = useDate(
                 schedule.day
               );

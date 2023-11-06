@@ -4,7 +4,7 @@ import fetch from "cross-fetch";
 // Function to initialize the Reactive Variable function (makeVar())
 const eventsIdList = () => {
   const storedList = localStorage.getItem("wishList");
-  if (storedList) {
+  if (storedList && storedList.length > 0) {
     try {
       const parsedList = JSON.parse(storedList);
       if (
