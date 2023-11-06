@@ -1,3 +1,4 @@
+import React from "react";
 import { SearchEventsProps } from "../../interfaces/interfaces";
 import Wishlist from "../Wishlist/Wishlist";
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { useQuery } from "@apollo/client";
 import { allEvents } from "../../graphql/eventsGraph";
 import EventBox from "./EventBox";
@@ -37,13 +38,9 @@ const EventsList = ({ searchQuery, dateQuery }: EventsListProps) => {
     return (
       <ul className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 min-h-[50vh]">
         {conferences && conferences.length > 0 ? (
-<<<<<<< HEAD
           conferences?.map((event) => {
             return <EventBox key={event.id} {...event} />;
           })
-=======
-          conferences?.map((event) => <EventBox key={event.id} {...event} />)
->>>>>>> parent of dc1f755 (tests for all events added)
         ) : (
           <div>There are no events</div>
         )}

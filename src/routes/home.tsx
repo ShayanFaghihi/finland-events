@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import Footer from "../components/sections/Footer";
 import EventsList from "../components/List/EventsList";

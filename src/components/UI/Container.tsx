@@ -1,3 +1,4 @@
+import React from "react";
 import { ContainerProps } from "../../interfaces/interfaces";
 
 const Container = ({ className, children }: ContainerProps) => {

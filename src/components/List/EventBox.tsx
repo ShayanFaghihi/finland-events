@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { wishlistVar } from "../../graphql/client";
 
 import { Link } from "react-router-dom";

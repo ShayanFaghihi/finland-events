@@ -1,3 +1,4 @@
+import React from "react";
 import { useReactiveVar } from "@apollo/client";
 import { wishlistVar } from "../../graphql/client";
 
