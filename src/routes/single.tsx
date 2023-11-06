@@ -9,9 +9,8 @@ import { Events } from "../interfaces/interfaces";
 
 const SinglePage = () => {
   const { eventId } = useParams();
-  const { loading, error, data } = useQuery<{ conference: Events }>(
-    singleEvent,
-    { variables: { eventId } }
+  const { loading, error, data } = useQuery<{ conferences: Events[] }>(
+    singleEvent
   );
 
   if (error) console.log(error);
@@ -25,23 +24,8 @@ const SinglePage = () => {
       </>
     );
   } else {
-    const eventData = data?.conference;
-    return (
-      eventData && (
-        <Event
-          event={eventData}
-          id={""}
-          name={""}
-          slogan={""}
-          websiteUrl={""}
-          startDate={""}
-          organizers={[]}
-          schedules={[]}
-          locations={[]}
-          isWishlist={false}
-        />
-      )
-    );
+    const event = data?.conferences.filter((item) => item.id === eventId);
+    return event && <Event {...event[0]} />;
   }
 };
 
